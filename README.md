@@ -15,8 +15,26 @@ Execute the following from the src/ directory:
     cd ../libroute # only if your system supports 4.4BSD style routing sockets
     make           # only if your system supports 4.4BSD style routing sockets
 
+    cd ../libgai
+    make
+
+    cp libunp.a /usr/lib
+    cp libunp.a /usr/lib64
+
+    mkdir temp
+    cp lib/unp.h temp/
+    ```c
+    ~~#include	"../config.h"~~
+    #include	<unpconfig.h>
+    ```
+    cp temp/unp.h /usr/include/
+    cp config.h /usr/include/unpconfig.h
+
     cd ../intro    # build and test a basic client program
-    make daytimetcpcli
+    ~~make daytimetcpcli~~
+    cc daytimetcpsrv.c -o daytimetcpsrv -lunp
+    ./daytimetcpsrv
+    cc daytimetcpcli.c -o daytimetcpcli -lunp
     ./daytimetcpcli 127.0.0.1
 
 If all that works, you're all set to start compiling individual programs.
