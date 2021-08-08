@@ -23,15 +23,13 @@ Execute the following from the src/ directory:
 
     mkdir temp
     cp lib/unp.h temp/
-    ```c
-    ~~#include	"../config.h"~~
-    #include	<unpconfig.h>
-    ```
+    "../config.h" ->  <unpconfig.h>
+
     cp temp/unp.h /usr/include/
     cp config.h /usr/include/unpconfig.h
 
     cd ../intro    # build and test a basic client program
-    ~~make daytimetcpcli~~
+    
     cc daytimetcpsrv.c -o daytimetcpsrv -lunp
     ./daytimetcpsrv
     cc daytimetcpcli.c -o daytimetcpcli -lunp
@@ -44,21 +42,21 @@ Notice that all the source code assumes tabs every 4 columns, not 8.
 MORE DETAILS
 ============
 
-5.  If you need to make any changes to the "unp.h" header, notice that it
+1.  If you need to make any changes to the "unp.h" header, notice that it
     is a hard link in each directory, so you only need to change it once.
 
-6.  Go into the "lib/" directory and type "make".  This builds the library
+2.  Go into the "lib/" directory and type "make".  This builds the library
     "libunp.a" that is required by almost all of the programs.  There may
     be compiler warnings (see NOTES below).  This step is where you'll find
     all of your system's dependencies, and you must just update your cf/
     files from step 1, rerun "config" and do this step again.
 
-6.  Go into the "libfree/" directory and type "make".  This adds to the
+3.  Go into the "libfree/" directory and type "make".  This adds to the
     "libunp.a" library.  The files in this directory do not #include
     the "unp.h" header, as people may want to use these functions
     independent of the book's examples.
 
-8.  Once the library is made from steps 5 and 6, you can then go into any
+4.  Once the library is made from steps 5 and 6, you can then go into any
     of the source code directories and make whatever program you are
     interested in.  Note that the horizontal rules at the beginning and
     end of each program listing in the book contain the directory name and
